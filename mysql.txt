@@ -1,0 +1,88 @@
+create database idealhub;
+use idealhub;
+
+#tabela produtos
+CREATE TABLE `produtos` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `produtos` (`id`, `nome`) VALUES
+(1, 'produto 1'),
+(2, 'produto 2');
+
+-- --------------------------------------------------------
+#tabela usuarios
+CREATE TABLE `usuarios` (
+  `usuario_id` int(11) NOT NULL AUTO_INCREMENT,
+  `usuario_nome` varchar(100) NOT NULL,
+  `usuario_login` varchar(100) NOT NULL,
+  `usuario_senha` varchar(100) NOT NULL,
+  `usuario_permissao` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `usuarios` ADD PRIMARY KEY (`usuario_id`);
+
+INSERT INTO `usuarios` (`usuario_id`, `usuario_nome`, `usuario_login`, `usuario_senha`, `usuario_permissao`) VALUES
+(1, 'Alexandre A. Neto', 'alexandre', 'teste123', 'listar-produtos,listar-relatorios,editar-produtos');
+
+
+
+
+ALTER TABLE `usuarios` 
+ADD COLUMN `usuario_key_sandbox` VARCHAR(100) NOT NULL DEFAULT '' AFTER `usuario_permissao`,
+ADD COLUMN `usuario_key_producao` VARCHAR(100) NOT NULL DEFAULT '' AFTER `usuario_key_sandbox`;
+
+ALTER TABLE `usuarios` ADD UNIQUE `UQ_key_sandbox`(`usuario_key_sandbox`),
+ ADD UNIQUE `UQ_key_producao`(`usuario_key_producao`);
+
+update usuarios
+set usuario_key_sandbox = 'alexandre_sandbox'
+where usuario_id = 1;
+
+
+CREATE TABLE `idealhub`.`lojas` (
+  `loja_id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  `loja_nome` VARCHAR(255) NOT NULL DEFAULT '',
+  `loja_cnpj` VARCHAR(50) NOT NULL DEFAULT '',
+  `loja_cep` VARCHAR(50),
+  `loja_api_key` VARCHAR(100) DEFAULT '',
+  `loja_api_sandbox` VARCHAR(100) DEFAULT '',
+  PRIMARY KEY(`loja_id`),
+  INDEX `Index_1`(`loja_nome`, `loja_api_key`)
+)
+ENGINE = InnoDB;
+
+ALTER TABLE `idealhub`.`usuarios` ADD COLUMN `usuario_id_loja` INTEGER UNSIGNED NOT NULL DEFAULT 0 AFTER `usuario_key_producao`;
+
+update usuarios
+set usuario_id_loja = 1
+where usuario_id = 1;
+
+ALTER TABLE `idealhub`.`usuarios` ADD CONSTRAINT `FK_usuarios_lojas` FOREIGN KEY `FK_usuarios_lojas` (`usuario_id_loja`)
+    REFERENCES `lojas` (`loja_id`)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT;
+
+
+
+
+CREATE TABLE `idealhub`.`bling` (
+  `bling_id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  `bling_id_loja` INTEGER UNSIGNED NOT NULL DEFAULT 0,
+  `bling_key` VARCHAR(100) NOT NULL DEFAULT '',
+  `bling_delimiter` VARCHAR(10),
+  PRIMARY KEY(`bling_id`)
+)
+ENGINE = InnoDB;
+
+ALTER TABLE `idealhub`.`bling` ADD INDEX `Index_2`(`bling_id_loja`, `bling_key`),
+ ADD CONSTRAINT `FK_bling_loja` FOREIGN KEY `FK_bling_loja` (`bling_id_loja`)
+    REFERENCES `lojas` (`loja_id`)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT;
+
+insert into bling values(null,1,'afe12840f8cb4045eb6fc602b6721004af0c61ef','.');
+
+
+
