@@ -1,8 +1,7 @@
 <?php if ( ! defined('DIR')) exit; ?>
 
 <?php
-$filter['api_key'] = $_SESSION['usuario']['api_key'];
-$dadosProdutos = $modelo->selectProdutos($filter);
+$dadosProdutos = $modelo->listarProdutos();
 
 
 ?>
@@ -49,7 +48,7 @@ $dadosProdutos = $modelo->selectProdutos($filter);
 					</div>
 					<div class="x_content">
 
-						<p>Aqui estão listados todos os produtos disponíveis para serem enviados em seus marketplaces.</p>
+						<p>Aqui estão listados todos os produtos disponíveis na sua plataforma.</p>
 
 						<!-- start project list -->
 						<table class="table table-striped projects">

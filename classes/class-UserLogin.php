@@ -68,7 +68,7 @@ class UserLogin
 
 			// Verifica se o usuário existe na base de dados
 			$query = $this->db->query( 
-				'SELECT id, nome_usuario, login_usuario
+				'SELECT id, nome_usuario, login_usuario, permissao_usuario
 					FROM usuarios u
 					
 				WHERE login_usuario = ? and senha = md5(?) LIMIT 1', 
@@ -84,7 +84,7 @@ class UserLogin
 				$_SESSION['usuario']['nome'] = $fetch['nome_usuario'];
 				$_SESSION['usuario']['login'] = $fetch['login_usuario'];
 				$_SESSION['usuario']['session_id'] = session_id();
-				//$_SESSION['usuario']['permissoes'] = explode(",", $fetch['usuario_permissao']);
+				$_SESSION['usuario']['permissoes'] = explode(",", $fetch['permissao_usuario']);
 
 				$this->userdata = $_SESSION['usuario'];
 				$this->logged_in = true;

@@ -16,8 +16,8 @@
 					<li><a href="<?php echo URL?>"><i class="fa fa-tachometer"></i> Dashboard </a></li>
 					<li><a><i class="fa fa-edit"></i> Produtos <span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
-							<li><a href="<?php echo URL."/products"?>">Cadastro de Produtos</a></li>
-							<li><a href="<?php echo URL."/category"?>">Categorias</a></li>
+							<li><a href="<?php echo URL."/produtos"?>">Cadastro de Produtos</a></li>
+							<li><a href="<?php echo URL."/categorias"?>">Categorias</a></li>
 						</ul>
 					</li>
 					<li><a><i class="fa fa-money"></i> Pedidos</a></li>

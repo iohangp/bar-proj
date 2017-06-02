@@ -110,7 +110,7 @@ class MainController extends UserLogin
 			if ( class_exists( $model_name ) ) {
 			
 				// Retorna um objeto da classe
-				return new $model_name( $this->db,$this->mongo, $this );
+				return new $model_name( $this->db, $this );
 			
 			}
 			
