@@ -1,7 +1,7 @@
 <?php if ( ! defined('DIR')) exit; ?>
 
 <?php
-$dadosProdutos = $modelo->listarProdutos();
+$dadosCategorias = $modelo->listarCategorias();
 
 
 ?>
@@ -11,7 +11,7 @@ $dadosProdutos = $modelo->listarProdutos();
 	<div class="">
 		<div class="page-title">
 			<div class="title_left">
-				<h3>Listagem Geral dos Produtos<small> ativos/inativos</small></h3>
+				<h3>Listagem de Categorias<small> ativos/inativos</small></h3>
 			</div>
 
 			<div class="title_right">
@@ -32,7 +32,7 @@ $dadosProdutos = $modelo->listarProdutos();
 			<div class="col-md-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<h2>Produtos</h2>
+						<h2>Categorias</h2>
 						<ul class="nav navbar-right panel_toolbox">
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
@@ -48,7 +48,7 @@ $dadosProdutos = $modelo->listarProdutos();
 					</div>
 					<div class="x_content">
 
-						<p>Aqui estão listados todos os produtos disponíveis na sua plataforma.</p>
+						<p>Aqui são listadas as categorias disponíveis para serem relacionadas aos produtos.</p>
 
 						<!-- start project list -->
 						<table class="table table-striped projects">
@@ -56,44 +56,32 @@ $dadosProdutos = $modelo->listarProdutos();
 								<tr>
 									<th style="width: 1%">ID</th>
 									<th style="width: 20%">Nome</th>
-									<th>Estoque</th>
-									<th>Categoria</th>
-									<th>Preço</th>
 									<th>Status</th>
 									<th style="width: 20%"></th>
 								</tr>
 							</thead>
 							<tbody>
-								<?php foreach($dadosProdutos as $produtos){
+								<?php foreach($dadosCategorias as $categorias){
 									//echo'<pre>';print_r($produtos);echo'</pre>';
 									?>
 								<tr>
-									<td><?=$produtos['id'] ?></td>
+									<td><?=$categorias['id'] ?></td>
 									<td>
-										<a><?=$produtos['nome_produto']?></a>
-										<br />
-										<small>Inserido <?=$produtos['cadastro_format']?></small>
-									</td>
-									<td><?=$produtos['estoque']?></td>
-									<td>
-										<?=$produtos['nome_categoria']?>
-									</td>
-									<td>
-										R$ <?=number_format($produtos['preco_venda'],2,',','.')?>
+										<a><?=$categorias['nome_categoria']?></a>
 									</td>
 									<td>
 										<? 
-											$class = ($produtos['situacao_produto'] == 1 ? 'btn-success' : 'btn-danger');
-											$status = ($produtos['situacao_produto'] == 1 ? 'ATIVO' : 'INATIVO');
+											$class = ($categorias['situacao_categoria'] == 1 ? 'btn-success' : 'btn-danger');
+											$status = ($categorias['situacao_categoria'] == 1 ? 'ATIVO' : 'INATIVO');
 										 ?>
 										<button type="button" class="btn <?=$class?> btn-xs"><?=$status?></button>
 									</td>
 									<td>
 										
-										<a href="<?php echo URL."/produtos/editar/".$produtos['id']?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a>
+										<a href="<?php echo URL."/categorias/editar/".$categorias['id']?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a>
 										<? 
-											$classBtn = ($produtos['situacao_produto'] == 'enabled' ? 'btn-danger':'btn-success'); 
-											$statusBtn = ($produtos['situacao_produto'] == 'enabled' ? 'Inativar' : 'Ativar');
+											$classBtn = ($categorias['situacao_categoria'] == 'enabled' ? 'btn-danger':'btn-success'); 
+											$statusBtn = ($categorias['situacao_categoria'] == 'enabled' ? 'Inativar' : 'Ativar');
 										?>
 
 										<a href="#" class="btn <?=$classBtn?> btn-xs"><i class="fa fa-trash-o"></i> <?=$statusBtn?> </a>

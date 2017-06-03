@@ -5,7 +5,7 @@
  * @package TutsupMVC
  * @since 0.1
  */
-class ProdutosModel
+class CategoriasModel
 {
 
 	/**
@@ -39,17 +39,27 @@ class ProdutosModel
 	 * @access public
 	 * @return array Os dados da base de dados
 	 */
-	public function listarProdutos() {
+	public function listarCategorias() {
 	
-		$sql = "SELECT *, DATE_FORMAT(p.data_cadastro,'%d/%m/%Y %H:%i:%S') as cadastro_format 
-			 	  FROM produtos p
-		         inner join categorias c on c.id = p.id_categoria";
+		$sql = "SELECT * from categorias ";
 		
 		// Faz a consulta
 		$query = $this->db->query($sql);
 		
 		// Retorna
 		return $query->fetchAll(PDO::FETCH_ASSOC);
+	}
+
+	public function getCategoria($id){
+
+		$sql = "SELECT * from categorias where id = ?";
+	
+		// Faz a consulta
+		$query = $this->db->query($sql, array($id));
+		
+		// Retorna
+		return $query->fetchAll(PDO::FETCH_ASSOC);
+
 	}
 	
 }

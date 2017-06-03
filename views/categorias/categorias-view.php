@@ -1,7 +1,7 @@
 <?php if ( ! defined('DIR')) exit; ?>
 
 <?php
-//$dadosProdutos = $modelo->listarProdutos();
+$dadosProdutos = $modelo->listarProdutos();
 ?>
 
 
