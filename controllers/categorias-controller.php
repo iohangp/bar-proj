@@ -42,7 +42,7 @@ class categoriasController extends MainController
     } // index
 
     public function editar($parametros){
-    	$this->title = 'Produtos';
+    	$this->title = 'Editar Categorias';
 		$this->permission_required = "editar-categorias";
 		
 		// Parametros da função
@@ -62,11 +62,51 @@ class categoriasController extends MainController
 
 	        if($_POST){
 	        	    	
-				$modelo->updateCategoria($paramUpdate,$parametros);
+				$modelo->editCategoria($_POST);
 
 	        }
 	        
 			
+			// /views/produtos/produtos-view.php
+	        include DIR . '/views/categorias/categorias-edit.php';
+		}
+
+       
+		// /views/_includes/footer.php
+        require DIR . '/views/_includes/footer.php';
+    }
+
+    public function inserir(){
+    	$this->title = 'Inserir Categorias';
+		$this->permission_required = "editar-categorias";
+		
+		// Parametros da função
+		$parametros = ( func_num_args() >= 1 ) ? func_get_arg(0) : array();
+
+        // Verifica se o usuário tem a permissão para acessar essa página
+		if (!$this->check_permissions($this->permission_required)) {
+
+			// /views/_includes/header.php
+        	require DIR . '/views/_includes/header.php';
+
+			require DIR . '/views/_includes/permission.php';
+		}else{
+			// Carrega o modelo para este view
+	        $modelo = $this->load_model('categorias/categorias-model');
+
+	        if($_POST){
+	        	    	
+				$idCategoria = $modelo->inserirCategoria($_POST);
+				
+				if(is_numeric($idCategoria)){
+					header("Location: ".URL."/categorias/editar/".$idCategoria); 
+					exit;
+				}
+
+	        }
+	        
+			// /views/_includes/header.php
+        	require DIR . '/views/_includes/header.php';
 			// /views/produtos/produtos-view.php
 	        include DIR . '/views/categorias/categorias-edit.php';
 		}

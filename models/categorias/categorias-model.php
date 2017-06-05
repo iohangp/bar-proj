@@ -61,5 +61,51 @@ class CategoriasModel
 		return $query->fetchAll(PDO::FETCH_ASSOC);
 
 	}
+
+	public function editCategoria($dados){
+
+		
+		$param = array();
+
+		$param[0] = $dados['name'];
+		$param[1] = $dados['description'];
+		$param[2] = $dados['situacao'];
+		$param[3] = $dados['_id'];
+
+		$sql = "update categorias c
+				set c.nome_categoria = ?,
+				    c.descricao_categoria = ?,
+				    c.situacao_categoria = ?
+				where c.id = ?";
+		if($this->db->query($sql, $param))
+			return true;
+		else
+			return false;
+
+
+
+	}
+
+	public function inserirCategoria($dados){
+
+		
+		$param = array();
+
+		$data['nome_categoria'] = $dados['name'];
+		$data['descricao_categoria'] = $dados['description'];
+		$data['situacao_categoria'] = ($dados['situacao'] ? $dados['situacao'] : 1);
+
+		$sql = "insert into categorias (nome_categoria, descricao_categoria, situacao_categoria)
+				values(?,?,?)";
+		$result = $this->db->insert('categorias',$data);
+	
+		if ( $result )
+			return $this->db->last_id;
+		else
+			return false;
+		
+
+
+	}
 	
 }

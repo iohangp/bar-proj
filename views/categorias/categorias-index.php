@@ -33,17 +33,9 @@ $dadosCategorias = $modelo->listarCategorias();
 				<div class="x_panel">
 					<div class="x_title">
 						<h2>Categorias</h2>
-						<ul class="nav navbar-right panel_toolbox">
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="#">ATIVOS</a>
-									</li>
-									<li><a href="#">INATIVOS</a>
-									</li>
-								</ul>
-							</li>
-						</ul>
+						<div style="float:right;">
+							<a href="<?php echo URL."/categorias/inserir/"?>" class="btn btn-primary btn-sm"> Adicionar </a>
+						</div>
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content">
@@ -81,10 +73,9 @@ $dadosCategorias = $modelo->listarCategorias();
 										<a href="<?php echo URL."/categorias/editar/".$categorias['id']?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a>
 										<? 
 											$classBtn = ($categorias['situacao_categoria'] == 'enabled' ? 'btn-danger':'btn-success'); 
-											$statusBtn = ($categorias['situacao_categoria'] == 'enabled' ? 'Inativar' : 'Ativar');
 										?>
 
-										<a href="#" class="btn <?=$classBtn?> btn-xs"><i class="fa fa-trash-o"></i> <?=$statusBtn?> </a>
+										<a href="#" class="btn <?=$classBtn?> btn-xs"><i class="fa fa-trash-o"></i> Excluir </a>
 									</td>
 								</tr>
 								<?}?>

@@ -3,10 +3,11 @@
 <?php
 
 
+if($parametros[0]){
+  $dadosCategoria = $modelo->getCategoria($parametros[0]);
 
-$dadosCategoria = $modelo->getCategoria($parametros[0]);
-
-$categoria = $dadosCategoria[0];
+  $categoria = $dadosCategoria[0];
+}
   //echo'<pre>';print_r($dadosCategoria);echo'</pre>';
 ?>
 
@@ -16,7 +17,7 @@ $categoria = $dadosCategoria[0];
 	<div class="">
 		<div class="page-title">
 			<div class="title_left">
-				<h3>Edição de Categorias</h3>
+				<h3>Cadastro/Edição de Categorias</h3>
 			</div>
 		</div>
 
@@ -39,7 +40,7 @@ $categoria = $dadosCategoria[0];
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nome <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="name" name="name" required="required" class="form-control col-md-7 col-xs-12" value="<?=$categoria['nome_categoria']?>">
+                          <input type="text" id="name" name="name" required="required" class="form-control col-md-7 col-xs-12" value="<?=@$categoria['nome_categoria']?>">
                         </div>
                       </div>
                       <div class="form-group">
@@ -48,7 +49,7 @@ $categoria = $dadosCategoria[0];
                         <div class="col-md-6 col-sm-6 col-xs-12">
                         
                            <textarea id="description" rows="5" class="form-control" name="description" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" 
-                            data-parsley-validation-threshold="10"><?=$categoria['descricao_categoria']?></textarea>
+                            data-parsley-validation-threshold="10"><?=@$categoria['descricao_categoria']?></textarea>
                         </div>
                       </div>
                        <div class="form-group">
@@ -56,7 +57,7 @@ $categoria = $dadosCategoria[0];
                         <div class="col-md-9 col-sm-9 col-xs-12">
                           <div class="">
                             <label>
-                              <input type="checkbox" class="js-switch" <?=$categoria['situacao_categoria'] == 1 ? 'checked' : ''?>/>
+                              <input type="checkbox" name="situacao" value="<?=(@$categoria['situacao_categoria'])?>" class="js-switch" <?=@$categoria['situacao_categoria'] == 1 ? 'checked' : ''?>/>
                               
                             </label>
                           </div>
