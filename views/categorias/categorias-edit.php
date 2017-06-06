@@ -57,7 +57,7 @@ if($parametros[0]){
                         <div class="col-md-9 col-sm-9 col-xs-12">
                           <div class="">
                             <label>
-                              <input type="checkbox" name="situacao" value="<?=(@$categoria['situacao_categoria'])?>" class="js-switch" <?=@$categoria['situacao_categoria'] == 1 ? 'checked' : ''?>/>
+                              <input type="checkbox" name="situacao" value="<?=(@$categoria['situacao_categoria'] ? @$categoria['situacao_categoria'] : 0)?>" class="js-switch" <?=@$categoria['situacao_categoria'] == 1 ? 'checked' : ''?>/>
                               
                             </label>
                           </div>

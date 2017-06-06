@@ -91,9 +91,11 @@ class CategoriasModel
 		
 		$param = array();
 
+
+
 		$data['nome_categoria'] = $dados['name'];
 		$data['descricao_categoria'] = $dados['description'];
-		$data['situacao_categoria'] = ($dados['situacao'] ? $dados['situacao'] : 1);
+		$data['situacao_categoria'] = ($dados['situacao'] ? $dados['situacao'] : 0);
 
 		$sql = "insert into categorias (nome_categoria, descricao_categoria, situacao_categoria)
 				values(?,?,?)";

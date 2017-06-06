@@ -50,7 +50,7 @@ class Manager
 		
 		$this->get_url_data();
 
-		
+
 		if (!$this->controlador) {
 			
 			// Adiciona o controlador padrão

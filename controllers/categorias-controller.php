@@ -59,7 +59,7 @@ class categoriasController extends MainController
 		}else{
 			// Carrega o modelo para este view
 	        $modelo = $this->load_model('categorias/categorias-model');
-
+	       
 	        if($_POST){
 	        	    	
 				$modelo->editCategoria($_POST);
@@ -93,9 +93,9 @@ class categoriasController extends MainController
 		}else{
 			// Carrega o modelo para este view
 	        $modelo = $this->load_model('categorias/categorias-model');
-
+	        
 	        if($_POST){
-	        	    	
+	        	
 				$idCategoria = $modelo->inserirCategoria($_POST);
 				
 				if(is_numeric($idCategoria)){
