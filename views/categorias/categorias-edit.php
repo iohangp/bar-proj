@@ -9,6 +9,8 @@ if($parametros[0]){
   $categoria = $dadosCategoria[0];
 }
   //echo'<pre>';print_r($dadosCategoria);echo'</pre>';
+
+echo @$mensagem;
 ?>
 
 

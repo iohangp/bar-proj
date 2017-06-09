@@ -27,6 +27,11 @@
     <link href="<?php echo CSS?>buttons.bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo CSS?>responsive.bootstrap.min.css" rel="stylesheet">
 
+    <script src="<?php echo JS?>jquery.min.js"></script>
+    <script src="<?php echo JS?>bootstrap.min.js"></script>
+    <script src="<?php echo JS?>bootstrap-notify.js"></script>
+    <script src="<?php echo JS?>bootstrap-notify.min.js"></script>
+
     <title><?php echo $this->title; ?></title>
 </head>
 

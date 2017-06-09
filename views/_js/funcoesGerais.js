@@ -20,4 +20,11 @@ $(document).ready(function() {
   		   $(this).val(0) 
   });
 
+	
 });
+
+
+
+
+
+

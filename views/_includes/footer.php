@@ -4,8 +4,7 @@
 			</footer>
 		</div> <?php //fecha container body?>
 
-		<script src="<?php echo JS?>jquery.min.js"></script>
-		<script src="<?php echo JS?>bootstrap.min.js"></script>
+		
 		<script src="<?php echo JS?>fastclick.js"></script>
 		<script src="<?php echo JS?>nprogress.js"></script>
 		<script src="<?php echo JS?>bootstrap-progressbar.min.js"></script>
@@ -30,17 +29,6 @@
 		<script src="<?php echo JS?>curvedLines.js"></script>
 
 		<script src="<?php echo JS?>date.js"></script>
-
-		<?php if(getParam(0)=="freight"){?>
-			<script src="<?php echo JS?>jquery.dataTables.min.js"></script>
-			<script src="<?php echo JS?>dataTables.bootstrap.min.js"></script>
-			<script src="<?php echo JS?>dataTables.buttons.min.js"></script>
-			<script src="<?php echo JS?>buttons.bootstrap.min.js"></script>
-		    <script src="<?php echo JS?>buttons.flash.min.js"></script>
-		    <script src="<?php echo JS?>buttons.html5.min.js"></script>
-		    <script src="<?php echo JS?>buttons.print.min.js"></script>
-		    <script src="<?php echo JS?>dataTables.responsive.min.js"></script>
-		<?php } ?>
 
 	
 

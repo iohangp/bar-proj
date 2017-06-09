@@ -62,13 +62,44 @@ class categoriasController extends MainController
 	       
 	        if($_POST){
 	        	    	
-				$modelo->editCategoria($_POST);
+				$response = $modelo->editCategoria($_POST);
+
+				if($response){
+					$mensagem = "<script>
+									$(document).ready(function() {
+
+									  $.notify({
+										title: '<strong>Edição de Categorias</strong><br>',
+										message: 'Categoria alterada com sucesso!'
+									  },{
+											type: 'success'
+									  });
+
+									});
+								</script>";
+				}else{
+
+					$mensagem = "<script>
+									$(document).ready(function() {
+
+									  $.notify({
+										title: '<strong>Edição de Categorias</strong><br>',
+										message: 'Erro inesperado ao editar a categoria'
+									  },{
+											type: 'danger'
+									  });
+
+									});
+								</script>";
+				}
+
 
 	        }
 	        
 			
 			// /views/produtos/produtos-view.php
 	        include DIR . '/views/categorias/categorias-edit.php';
+				
 		}
 
        

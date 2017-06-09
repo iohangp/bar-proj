@@ -3,6 +3,7 @@
 <?php
 $dadosCategorias = $modelo->listarCategorias();
 
+//Printa a mensagem de confirmação;
 
 ?>
 
