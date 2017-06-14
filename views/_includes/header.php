@@ -21,12 +21,16 @@
     <link href="<?php echo CSS?>switchery.min.css" rel="stylesheet">
     <link href="<?php echo CSS?>green.css" rel="stylesheet">
     <link href="<?php echo CSS?>select2.min.css" rel="stylesheet">
-    
 
     <link href="<?php echo CSS?>dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo CSS?>buttons.bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo CSS?>responsive.bootstrap.min.css" rel="stylesheet">
 
+    <link href="<?php echo PLUGIN?>jquery-ui-1.12.1.custom/jquery-ui.css" rel="stylesheet">
+
+    <script type="text/javascript">
+        var urlSite = '<?=URL?>';
+    </script>
     <script src="<?php echo JS?>jquery.min.js"></script>
     <script src="<?php echo JS?>bootstrap.min.js"></script>
     <script src="<?php echo JS?>bootstrap-notify.js"></script>

@@ -8,6 +8,7 @@ define( 'DIR', dirname( __FILE__ ) );
 define( 'URL', 'http://localhost/bar-proj' );
 define( 'IMG', URL."/views/_images/");
 define( 'JS', URL."/views/_js/");
+define( 'PLUGIN', URL."/views/_plugins/");
 define( 'CSS', URL."/views/_css/");
 
 //dados do banco - MYSQL

@@ -30,6 +30,10 @@
 
 		<script src="<?php echo JS?>date.js"></script>
 
+		<script src="<?php echo PLUGIN?>jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+
+
+
 	
 
 		<?php if(getParam(0)==""){?>

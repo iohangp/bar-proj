@@ -109,5 +109,20 @@ class CategoriasModel
 
 
 	}
+
+	public function excluirCategoria($idCategoria){
+
+
+		$result = $this->db->delete('categorias','id',$idCategoria);
+	
+		if ( $result )
+			return true;
+		else
+			return false;
+		
+
+
+	}
+	
 	
 }

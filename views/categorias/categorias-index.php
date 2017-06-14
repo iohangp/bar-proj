@@ -43,6 +43,10 @@ $dadosCategorias = $modelo->listarCategorias();
 
 						<p>Aqui são listadas as categorias disponíveis para serem relacionadas aos produtos.</p>
 
+						<div id="dialog-confirm" title="Deseja excluir a categoria?" style="display: none">
+						  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
+						   A categoria será excluída e não poderá ser recuperada. Você tem certeza?</p>
+						</div>
 						<!-- start project list -->
 						<table class="table table-striped projects">
 							<thead>
@@ -72,11 +76,9 @@ $dadosCategorias = $modelo->listarCategorias();
 									<td>
 										
 										<a href="<?php echo URL."/categorias/editar/".$categorias['id']?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a>
-										<? 
-											$classBtn = ($categorias['situacao_categoria'] == 'enabled' ? 'btn-danger':'btn-success'); 
-										?>
+										
 
-										<a href="#" class="btn <?=$classBtn?> btn-xs"><i class="fa fa-trash-o"></i> Excluir </a>
+										<a attribute="<?=$categorias['id']?>" class="btn btn-danger btn-xs excluirCat"><i class="fa fa-trash-o"></i> Excluir </a>
 									</td>
 								</tr>
 								<?}?>

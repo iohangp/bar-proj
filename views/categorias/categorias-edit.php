@@ -8,9 +8,32 @@ if($parametros[0]){
 
   $categoria = $dadosCategoria[0];
 }
-  //echo'<pre>';print_r($dadosCategoria);echo'</pre>';
 
-echo @$mensagem;
+
+if(@$_GET['status']){
+   $status = $_GET['status']; 
+   @$mensagem = 'A categoria foi salva com sucesso!';
+ }
+
+if(@$status){
+?>
+
+  <script>
+
+        $(document).ready(function() {
+
+          $.notify({
+          title: '<strong>Cadastro/Edição de Categorias</strong><br>',
+          message: '<?=@$mensagem?>'
+          },{
+            type: '<?=@$status?>'
+          });
+
+        });
+
+  </script>
+<?
+}
 ?>
 
 
@@ -30,7 +53,9 @@ echo @$mensagem;
 				<div class="x_panel">
 					<div class="x_title">
                     <small>Você pode alterar a qualquer momento as informações da categoria</small>
-
+              <div style="float:right;">
+              <a href="<?php echo URL."/categorias/"?>" class="btn btn-dark btn-sm"> Voltar </a>
+            </div>
                     <div class="clearfix"></div>
                   </div>
 
@@ -69,7 +94,7 @@ echo @$mensagem;
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary">Cancelar</button>
+                          <button type="submit" class="btn btn-danger">Cancelar</button>
                           <button type="submit" class="btn btn-success">Salvar</button>
                         </div>
                       </div>
