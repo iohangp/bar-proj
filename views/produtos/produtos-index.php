@@ -33,23 +33,20 @@ $dadosProdutos = $modelo->listarProdutos();
 				<div class="x_panel">
 					<div class="x_title">
 						<h2>Produtos</h2>
-						<ul class="nav navbar-right panel_toolbox">
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="#">ATIVOS</a>
-									</li>
-									<li><a href="#">INATIVOS</a>
-									</li>
-								</ul>
-							</li>
-						</ul>
+						<div style="float:right;">
+							<a href="<?php echo URL."/produtos/inserir/"?>" class="btn btn-primary btn-sm"> Adicionar </a>
+						</div>
+					
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content">
 
 						<p>Aqui estão listados todos os produtos disponíveis na sua plataforma.</p>
 
+						<div id="dialog-confirm" title="Deseja excluir o produto?" style="display: none">
+						  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
+						   O Produto será excluído e não poderá ser recuperado. Você tem certeza?</p>
+						</div>
 						<!-- start project list -->
 						<table class="table table-striped projects">
 							<thead>
@@ -96,7 +93,7 @@ $dadosProdutos = $modelo->listarProdutos();
 											$statusBtn = ($produtos['situacao_produto'] == 'enabled' ? 'Inativar' : 'Ativar');
 										?>
 
-										<a href="#" class="btn <?=$classBtn?> btn-xs"><i class="fa fa-trash-o"></i> <?=$statusBtn?> </a>
+										<a attribute="<?=$produtos['id']?>" class="btn btn-danger btn-xs excluirProd"><i class="fa fa-trash-o"></i> Excluir </a>
 									</td>
 								</tr>
 								<?}?>

@@ -9,8 +9,8 @@ $(document).ready(function() {
 
   $(".select2_group").select2({});
   $(".select2_multiple").select2({
-    maximumSelectionLength: 3,
-    placeholder: "Max. 3 categorias",
+    maximumSelectionLength: 1,
+    placeholder: "Max. 1 categoria",
     allowClear: true
   });
 
@@ -22,29 +22,53 @@ $(document).ready(function() {
   		   $(this).val(0) 
   });
 
-  $(".excluirCat").click(function(){
 
-  	var idCategoria = $(this).attr('attribute');
-
-	$( "#dialog-confirm" ).dialog({
-	      resizable: false,
-	      height: "auto",
-	      width: 400,
-	      modal: true,
-	      buttons: {
-	        "Excluir": function() {
-	          window.location.href = urlSite+"/categorias/excluir/"+idCategoria;
-	        },
-	        Cancelar: function() {
-	          $( this ).dialog( "close" );
-	        }
-	      }
-	});
-  });
 
 
   /********************* Categorias *************************/
 
+  $(".excluirCat").click(function(){
+
+    var idCategoria = $(this).attr('attribute');
+
+  $( "#dialog-confirm" ).dialog({
+        resizable: false,
+        height: "auto",
+        width: 400,
+        modal: true,
+        buttons: {
+          "Excluir": function() {
+            window.location.href = urlSite+"/categorias/excluir/"+idCategoria;
+          },
+          Cancelar: function() {
+            $( this ).dialog( "close" );
+          }
+        }
+  });
+  });
+
+
+  /************************ Produtos ***********************/
+
+$(".excluirProd").click(function(){
+
+    var idProduto = $(this).attr('attribute');
+
+  $( "#dialog-confirm" ).dialog({
+        resizable: false,
+        height: "auto",
+        width: 400,
+        modal: true,
+        buttons: {
+          "Excluir": function() {
+            window.location.href = urlSite+"/produtos/excluir/"+idProduto;
+          },
+          Cancelar: function() {
+            $( this ).dialog( "close" );
+          }
+        }
+  });
+  });
 
 	
 });

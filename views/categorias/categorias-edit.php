@@ -52,12 +52,12 @@ if(@$status){
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-                    <small>Você pode alterar a qualquer momento as informações da categoria</small>
+              <small>Você pode alterar a qualquer momento as informações da categoria</small>
               <div style="float:right;">
-              <a href="<?php echo URL."/categorias/"?>" class="btn btn-dark btn-sm"> Voltar </a>
-            </div>
-                    <div class="clearfix"></div>
-                  </div>
+                <a href="<?php echo URL."/categorias/"?>" class="btn btn-dark btn-sm"> Voltar </a>
+              </div>
+            <div class="clearfix"></div>
+          </div>
 
 					<div class="x_content">		
 						<br />

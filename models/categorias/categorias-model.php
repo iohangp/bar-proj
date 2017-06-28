@@ -50,6 +50,17 @@ class CategoriasModel
 		return $query->fetchAll(PDO::FETCH_ASSOC);
 	}
 
+	public function categoriasSelect() {
+	
+		$sql = "SELECT * from categorias where situacao_categoria = 1";
+		
+		// Faz a consulta
+		$query = $this->db->query($sql);
+		
+		// Retorna
+		return $query->fetchAll(PDO::FETCH_ASSOC);
+	}
+
 	public function getCategoria($id){
 
 		$sql = "SELECT * from categorias where id = ?";
@@ -69,7 +80,7 @@ class CategoriasModel
 
 		$param[0] = $dados['name'];
 		$param[1] = $dados['description'];
-		$param[2] = $dados['situacao'];
+		$param[2] = ($dados['situacao'] ? $dados['situacao'] : 0);
 		$param[3] = $dados['_id'];
 
 		$sql = "update categorias c
