@@ -1,0 +1,114 @@
+-- MySQL Administrator dump 1.4
+--
+-- ------------------------------------------------------
+-- Server version	5.5.5-10.1.16-MariaDB
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+--
+-- Create schema barproj
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ barproj;
+USE barproj;
+
+--
+-- Table structure for table `barproj`.`categorias`
+--
+
+DROP TABLE IF EXISTS `categorias`;
+CREATE TABLE `categorias` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `nome_categoria` varchar(255) NOT NULL DEFAULT '',
+  `situacao_categoria` int(10) unsigned NOT NULL DEFAULT '1',
+  `descricao_categoria` text NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Index_2` (`nome_categoria`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `barproj`.`categorias`
+--
+
+/*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
+INSERT INTO `categorias` (`id`,`nome_categoria`,`situacao_categoria`,`descricao_categoria`) VALUES 
+ (1,'Cervejas',1,'Tetete'),
+ (18,'Vinhos',0,''),
+ (19,'Porções',1,''),
+ (24,'Refeição',1,'Testes');
+/*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `barproj`.`produtos`
+--
+
+DROP TABLE IF EXISTS `produtos`;
+CREATE TABLE `produtos` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `nome_produto` varchar(255) NOT NULL DEFAULT '',
+  `descricao_produto` text,
+  `preco_custo` double DEFAULT NULL,
+  `preco_venda` double NOT NULL DEFAULT '0',
+  `estoque` int(10) unsigned NOT NULL DEFAULT '0',
+  `situacao_produto` int(10) unsigned NOT NULL DEFAULT '1',
+  `id_categoria` int(10) unsigned NOT NULL DEFAULT '0',
+  `codigo` varchar(100) DEFAULT NULL,
+  `data_cadastro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `FK_produtos_categoria` (`id_categoria`),
+  CONSTRAINT `FK_produtos_categoria` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `barproj`.`produtos`
+--
+
+/*!40000 ALTER TABLE `produtos` DISABLE KEYS */;
+INSERT INTO `produtos` (`id`,`nome_produto`,`descricao_produto`,`preco_custo`,`preco_venda`,`estoque`,`situacao_produto`,`id_categoria`,`codigo`,`data_cadastro`) VALUES 
+ (1,'Brahma','Cerveja Brahmass',4.52,6.5,200,1,19,'019222','2017-06-02 23:04:51'),
+ (2,'Skol','Cerveja Skol',2,5,20,0,1,'20022','2017-06-27 23:54:47');
+/*!40000 ALTER TABLE `produtos` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `barproj`.`usuarios`
+--
+
+DROP TABLE IF EXISTS `usuarios`;
+CREATE TABLE `usuarios` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `nome_usuario` varchar(100) NOT NULL DEFAULT '',
+  `senha` varchar(255) NOT NULL DEFAULT '',
+  `login_usuario` varchar(255) NOT NULL DEFAULT '',
+  `situacao_usuario` int(10) unsigned NOT NULL DEFAULT '1',
+  `permissao_usuario` text NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Index_2` (`senha`,`login_usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `barproj`.`usuarios`
+--
+
+/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` (`id`,`nome_usuario`,`senha`,`login_usuario`,`situacao_usuario`,`permissao_usuario`) VALUES 
+ (1,'Iohan Gomes Pierdoná','e10adc3949ba59abbe56e057f20f883e','iohangp',1,'listar-produtos,editar-produtos,inserir-produtos,listar-categorias,editar-categorias');
+/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
